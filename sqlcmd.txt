@@ -1,0 +1,336 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show database
+    -> ^C
+mysql> show databases
+    -> show databases^C
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> create database adsolution;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| adsolution         |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> use adsolution;
+Database changed
+mysql> create table Student (name varchar(13),rollno int primary key,Physics int,Chemistry int, Maths int);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| adsolution         |
+| information_schema |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> show tables;
++----------------------+
+| Tables_in_adsolution |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values ('Rohit',1,23,45,50)('Amit',2,90.98.97)('Ankit',4,34,75,97)('Lucky',65,78,87);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('Amit',2,90.98.97)('Ankit',4,34,75,97)('Lucky',65,78,87)' at line 1
+mysql> insert into student values ('Rohit',1,23,45,50)('Amit',2,90,98,97)('Ankit',4,34,75,97)('Lucky',65,78,87);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('Amit',2,90,98,97)('Ankit',4,34,75,97)('Lucky',65,78,87)' at line 1
+mysql> insert into student values ('Rohit',1,23,45,50)('Amit',2,90,98,97)('Ankit',4,34,75,97)('Lucky',5,65,78,87);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('Amit',2,90,98,97)('Ankit',4,34,75,97)('Lucky',5,65,78,87)' at line 1
+mysql> insert into student values ('Rohit',1,23,45,50),('Amit',2,90,98,97),('Ankit',4,34,75,97),('Lucky',5,65,78,87);
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> show tables;
++----------------------+
+| Tables_in_adsolution |
++----------------------+
+| student              |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Lucky |      5 |      65 |        78 |    87 |
++-------+--------+---------+-----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values ('Rohit',1,23,45,50)('Amit',2,90,98,97)('Ankit',4,34,75,97)('Lucky',5,65,78,87);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('Amit',2,90,98,97)('Ankit',4,34,75,97)('Lucky',5,65,78,87)' at line 1
+mysql> insert into student values ('Rohit',8,23,45,50),('Amit',7,90,98,97),('Ankit',3,34,75,97),('Lucky',6,65,78,87);
+Query OK, 4 rows affected (0.04 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Lucky |      5 |      65 |        78 |    87 |
+| Lucky |      6 |      65 |        78 |    87 |
+| Amit  |      7 |      90 |        98 |    97 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select name from student;
++-------+
+| name  |
++-------+
+| Rohit |
+| Amit  |
+| Ankit |
+| Ankit |
+| Lucky |
+| Lucky |
+| Amit  |
+| Rohit |
++-------+
+8 rows in set (0.00 sec)
+
+mysql> select name from pyhsics;
+ERROR 1146 (42S02): Table 'adsolution.pyhsics' doesn't exist
+mysql> select name from Pyhsics;
+ERROR 1146 (42S02): Table 'adsolution.pyhsics' doesn't exist
+mysql> select physics from student;
++---------+
+| physics |
++---------+
+|      23 |
+|      90 |
+|      34 |
+|      34 |
+|      65 |
+|      65 |
+|      90 |
+|      23 |
++---------+
+8 rows in set (0.00 sec)
+
+mysql> select physics,name from student;
++---------+-------+
+| physics | name  |
++---------+-------+
+|      23 | Rohit |
+|      90 | Amit  |
+|      34 | Ankit |
+|      34 | Ankit |
+|      65 | Lucky |
+|      65 | Lucky |
+|      90 | Amit  |
+|      23 | Rohit |
++---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select maths,name from student;
++-------+-------+
+| maths | name  |
++-------+-------+
+|    50 | Rohit |
+|    97 | Amit  |
+|    97 | Ankit |
+|    97 | Ankit |
+|    87 | Lucky |
+|    87 | Lucky |
+|    97 | Amit  |
+|    50 | Rohit |
++-------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Lucky |      5 |      65 |        78 |    87 |
+| Lucky |      6 |      65 |        78 |    87 |
+| Amit  |      7 |      90 |        98 |    97 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student where name = 'Lucky';
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Lucky |      5 |      65 |        78 |    87 |
+| Lucky |      6 |      65 |        78 |    87 |
++-------+--------+---------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select *from student where physics = 34;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
++-------+--------+---------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select *from student where maths = 97;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Amit  |      7 |      90 |        98 |    97 |
++-------+--------+---------+-----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select *from student where maths > 97;
+Empty set (0.00 sec)
+
+mysql> select *from student where maths <= 97;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Lucky |      5 |      65 |        78 |    87 |
+| Lucky |      6 |      65 |        78 |    87 |
+| Amit  |      7 |      90 |        98 |    97 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+8 rows in set (0.00 sec)
+
+mysql> select *from student where name like '%a';
+Empty set (0.00 sec)
+
+mysql> select *from student where name like '%A';
+Empty set (0.00 sec)
+
+mysql> select *from student where name like 'A%';
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Amit  |      7 |      90 |        98 |    97 |
++-------+--------+---------+-----------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select *from student where name like '%y';
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Lucky |      5 |      65 |        78 |    87 |
+| Lucky |      6 |      65 |        78 |    87 |
++-------+--------+---------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> DELETE FROM STUDENT WHERE NAME = 'LUCKY';
+Query OK, 2 rows affected (0.01 sec)
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Amit  |      2 |      90 |        98 |    97 |
+| Ankit |      3 |      34 |        75 |    97 |
+| Ankit |      4 |      34 |        75 |    97 |
+| Amit  |      7 |      90 |        98 |    97 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+6 rows in set (0.00 sec)
+
+mysql> DELETE FROM STUDENT WHERE MATHS = 97;
+Query OK, 4 rows affected (0.01 sec)
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE STUDENT SET CHEMISTRY = 45 WHERE ROLLNO = 1;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        45 |    50 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE STUDENT SET CHEMISTRY = 87 WHERE ROLLNO = 1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> UPDATE STUDENT SET CHEMISTRY = 87 WHERE ROLLNO = 1;
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select *from student;
++-------+--------+---------+-----------+-------+
+| name  | rollno | Physics | Chemistry | Maths |
++-------+--------+---------+-----------+-------+
+| Rohit |      1 |      23 |        87 |    50 |
+| Rohit |      8 |      23 |        45 |    50 |
++-------+--------+---------+-----------+-------+
+2 rows in set (0.00 sec)
