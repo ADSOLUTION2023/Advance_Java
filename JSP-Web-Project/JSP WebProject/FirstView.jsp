@@ -39,11 +39,11 @@
 					<th></th>
 					<td><input type="submit" name="operation" value="Save"></td>
 				</tr>
-				<h1><%=firstName%></h1>
+				<%-- <h1><%=firstName%></h1>
 				<h1><%=lastName%></h1>
 				<h1><%=login%></h1>
 				<h1><%=password%></h1>
-				<h1><%=dob%></h1>
+				<h1><%=dob%></h1> --%>
 				
 			</table>
 	</div>
